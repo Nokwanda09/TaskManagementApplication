@@ -1,8 +1,8 @@
-package com.singabenkosimpungose.taskmanagement.API.repositories;
+package com.singabenkosimpungose.taskmanagement.repositories;
 
-import com.singabenkosimpungose.taskmanagement.API.models.Task;
-import com.singabenkosimpungose.taskmanagement.API.models.Category;
-import com.singabenkosimpungose.taskmanagement.API.models.User;
+import com.singabenkosimpungose.taskmanagement.models.Task;
+import com.singabenkosimpungose.taskmanagement.models.Category;
+import com.singabenkosimpungose.taskmanagement.models.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

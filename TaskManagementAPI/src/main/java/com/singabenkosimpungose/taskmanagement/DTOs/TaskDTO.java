@@ -1,4 +1,4 @@
-package com.singabenkosimpungose.taskmanagement.API.DTOs;
+package com.singabenkosimpungose.taskmanagement.DTOs;
 
 import lombok.*;
 

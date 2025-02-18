@@ -1,4 +1,4 @@
-package com.singabenkosimpungose.taskmanagement.API.exceptions;
+package com.singabenkosimpungose.taskmanagement.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

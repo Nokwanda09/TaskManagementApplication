@@ -1,10 +1,10 @@
-package com.singabenkosimpungose.taskmanagement.API.controllers;
+package com.singabenkosimpungose.taskmanagement.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.singabenkosimpungose.taskmanagement.API.models.User;
-import com.singabenkosimpungose.taskmanagement.API.services.UserService;
+import com.singabenkosimpungose.taskmanagement.models.User;
+import com.singabenkosimpungose.taskmanagement.services.UserService;
 
 
 @RestController

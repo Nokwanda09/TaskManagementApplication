@@ -1,10 +1,10 @@
-package com.singabenkosimpungose.taskmanagement.API.mappers;
+package com.singabenkosimpungose.taskmanagement.mappers;
 
-import com.singabenkosimpungose.taskmanagement.API.DTOs.TaskDTO;
-import com.singabenkosimpungose.taskmanagement.API.models.Category;
-import com.singabenkosimpungose.taskmanagement.API.models.Task;
-import com.singabenkosimpungose.taskmanagement.API.models.User;
-import com.singabenkosimpungose.taskmanagement.API.services.UserService;
+import com.singabenkosimpungose.taskmanagement.DTOs.TaskDTO;
+import com.singabenkosimpungose.taskmanagement.models.Category;
+import com.singabenkosimpungose.taskmanagement.models.Task;
+import com.singabenkosimpungose.taskmanagement.models.User;
+import com.singabenkosimpungose.taskmanagement.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

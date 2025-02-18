@@ -1,4 +1,4 @@
-package com.singabenkosimpungose.taskmanagement.API.models;
+package com.singabenkosimpungose.taskmanagement.models;
 
 import jakarta.persistence.*;
 

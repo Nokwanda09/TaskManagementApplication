@@ -1,4 +1,4 @@
-package com.singabenkosimpungose.taskmanagement.API.exceptions;
+package com.singabenkosimpungose.taskmanagement.exceptions;
 
 public class EntityNotFoundException extends RuntimeException {
 

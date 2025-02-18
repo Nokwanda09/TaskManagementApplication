@@ -1,16 +1,16 @@
-package com.singabenkosimpungose.taskmanagement.API.services;
+package com.singabenkosimpungose.taskmanagement.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.singabenkosimpungose.taskmanagement.API.models.Task;
-import com.singabenkosimpungose.taskmanagement.API.models.User;
-import com.singabenkosimpungose.taskmanagement.API.mappers.DateFormatter;
-import com.singabenkosimpungose.taskmanagement.API.models.Category;
-import com.singabenkosimpungose.taskmanagement.API.repositories.TaskRepository;
-import com.singabenkosimpungose.taskmanagement.API.DTOs.TaskDTO;
-import com.singabenkosimpungose.taskmanagement.API.mappers.TaskMapper;
-import com.singabenkosimpungose.taskmanagement.API.exceptions.EntityNotFoundException;
+import com.singabenkosimpungose.taskmanagement.models.Task;
+import com.singabenkosimpungose.taskmanagement.models.User;
+import com.singabenkosimpungose.taskmanagement.mappers.DateFormatter;
+import com.singabenkosimpungose.taskmanagement.models.Category;
+import com.singabenkosimpungose.taskmanagement.repositories.TaskRepository;
+import com.singabenkosimpungose.taskmanagement.DTOs.TaskDTO;
+import com.singabenkosimpungose.taskmanagement.mappers.TaskMapper;
+import com.singabenkosimpungose.taskmanagement.exceptions.EntityNotFoundException;
 
 
 import java.util.Optional;

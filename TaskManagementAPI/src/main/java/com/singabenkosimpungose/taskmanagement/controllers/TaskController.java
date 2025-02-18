@@ -1,15 +1,15 @@
-package com.singabenkosimpungose.taskmanagement.API.controllers;
+package com.singabenkosimpungose.taskmanagement.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.singabenkosimpungose.taskmanagement.API.services.TaskService;
-import com.singabenkosimpungose.taskmanagement.API.services.UserService;
-import com.singabenkosimpungose.taskmanagement.API.models.Task;
-import com.singabenkosimpungose.taskmanagement.API.models.User;
-import com.singabenkosimpungose.taskmanagement.API.DTOs.TaskDTO;
+import com.singabenkosimpungose.taskmanagement.services.TaskService;
+import com.singabenkosimpungose.taskmanagement.services.UserService;
+import com.singabenkosimpungose.taskmanagement.models.Task;
+import com.singabenkosimpungose.taskmanagement.models.User;
+import com.singabenkosimpungose.taskmanagement.DTOs.TaskDTO;
 
 import java.util.List;
 

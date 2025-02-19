@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task Management | Create Profile</title>
-    
+    <title>Task Management | Add Task</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -28,30 +27,44 @@
     <link rel="stylesheet" href="/Web/src/styles.css" />
   </head>
   <body>
-    <div class="card w-50 m-auto mt-5">
+    <div class="card w-50 m-auto mt-5 mb-5">
       <div class="card-body">
-        <h1>Create Profile</h1>
-        <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control"
-            id="email-address"
-            name="email-address"
-          />
-          <label for="email-address">Email address</label>
-        </div>
-        <div class="form-floating">
-          <input
-            type="user-name"
-            class="form-control"
-            id="user-name"
-            name="user-name"
-          />
-          <label for="user-name">Your name</label>
-        </div>
-      </div>
-      <div class="enter-btn">
-        <button type="submit">Create Profile</button>
+        <h1>Add new task</h1>
+        <form action="" method="">
+          <div class="mb-5">
+            <label for="task-name">Task Name</label>
+            <input
+              type="email"
+              class="form-control"
+              id="task-name"
+              name="task-name"
+            />
+          </div>
+
+          <div class="mb-5">
+            <label for="task-category">Task Category</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected></option>
+              <option value="PERSONAL">PERSONAL</option>
+              <option value="SCHOOL">SCHOOL</option>
+              <option value="WORK">WORK</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="task-notes" class="form-label">Notes</label>
+            <textarea
+              class="form-control"
+              id="task-notes"
+              name="task-name"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="enter-btn">
+            <button type="submit">Add Task</button>
+          </div>
+        </form>
       </div>
     </div>
   </body>

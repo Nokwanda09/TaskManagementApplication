@@ -34,13 +34,14 @@ public class UserService {
     }
 
 
-    public User getExistingUser(String name, String email){
-        Optional<User> user = userRepository.findUserByNameAndEmail(name, email);
+    public Boolean userExists(String email){
+        Optional<User> user = userRepository.findUserByEmail(email);
 
         if (user.isPresent()){
-            return (User) user.get();
+            return true;
         } else{
-            throw new EntityNotFoundException("The user does not exist");
+            // throw new EntityNotFoundException("The user does not exist");
+            return false;
         }
     }
 

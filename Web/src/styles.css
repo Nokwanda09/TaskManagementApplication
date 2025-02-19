@@ -1,32 +1,30 @@
- 
-
 body {
   background: #f2f9f1;
+  font: Poppins;
 }
 
-h1{
-    font-family: Delicious Handrawn;
-    text-align: center;
-    margin: 20px 0 60px 0;
+h1 {
+  font-family: Delicious Handrawn;
+  text-align: center;
+  margin: 20px 0 60px 0;
 }
 
-.enter-btn{
-    display: flex;
-    justify-content: center;
+.enter-btn {
+  display: flex;
+  justify-content: center;
 }
 
-.enter-btn button{
-    color:  #2c786c;
-    padding: 10px 30px;
-    margin: 30px 0;
-    font-size: 20px;
-    font-weight: bold;
-    align-items: center;
-    border: 1px solid #ddeedf;
-    border-radius: 5px;
+.enter-btn button {
+  color: #2c786c;
+  padding: 10px 30px;
+  margin: 30px 0;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  border: 1px solid #ddeedf;
+  border-radius: 5px;
 }
 
-.enter-btn button:hover{
-    background-color: #ddeedf;
+.enter-btn button:hover {
+  background-color: #ddeedf;
 }
-

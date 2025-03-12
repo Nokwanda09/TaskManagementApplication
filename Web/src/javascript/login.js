@@ -19,7 +19,6 @@ function loginUser(event) {
       if (data.exists) {
         window.location.href = "/Web/HTML/displayTasks.html";
       } else {
-        // window.location.href = "/Web/HTML/createProfile.html";
         changeCardContent();
         addCreateProfileBtn();
       }
@@ -30,8 +29,7 @@ function changeCardContent() {
   loginForm.style.display = "none";
   const promptParagraph = document.createElement("p");
   promptParagraph.innerText =
-    "You currently do not have a profile.\nPlease click the button to create Account.";
-  // console.log(cardBody);
+    "You currently do not have a profile.\nPlease click the button below to create account.";
   cardBody.appendChild(promptParagraph);
   promptParagraph.style.display = "block";
   promptParagraph.style.textAlign = "center";

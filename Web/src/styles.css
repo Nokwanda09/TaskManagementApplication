@@ -28,3 +28,7 @@ h1 {
 .enter-btn button:hover {
   background-color: #ddeedf;
 }
+
+.enter-btn button:focus {
+  color: black;
+}

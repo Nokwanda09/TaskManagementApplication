@@ -1,7 +1,7 @@
 package com.singabenkosimpungose.taskmanagement.models;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;
@@ -18,10 +18,14 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    private String fullName;
 
-    private String name;
+    @NotNull
+    @Column(name="username", unique=true)
+    private String username;
 
-    private String email;
+    @NotNull
+    private String password;
 
     @OneToMany(mappedBy="user", cascade= CascadeType.ALL, orphanRemoval= true)
     private List<Task> tasks;

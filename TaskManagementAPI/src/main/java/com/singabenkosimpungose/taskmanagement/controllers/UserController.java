@@ -19,10 +19,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
-    public ResponseEntity<Map<String, Boolean>> loginUser(@RequestBody UserDTO loginUser){
-        Boolean userExists =  userService.verifyUser(loginUser);
-        return new ResponseEntity<>(Map.of("userExists", userExists), HttpStatus.OK);
+    // @PostMapping("/login")
+    // public ResponseEntity<Map<String, Boolean>> loginUser(@RequestBody UserDTO loginUser){
+    //     Boolean userExists =  userService.verifyUser(loginUser);
+    //     return new ResponseEntity<>(Map.of("userExists", userExists), HttpStatus.OK);
+    // }
+
+       @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody UserDTO loginUser){
+        String userExists =  userService.verifyUser(loginUser);
+        return ResponseEntity.ok(userExists);
     }
 
 

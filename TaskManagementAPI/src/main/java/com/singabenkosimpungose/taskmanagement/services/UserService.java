@@ -25,19 +25,22 @@ public class UserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JwtService jwtService;
+
     // @Autowired
     // private UserDTO userDto;
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
-    public Boolean verifyUser(UserDTO user) {
+    public String verifyUser(UserDTO user) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
         if (authentication.isAuthenticated())
-            return true;
+            return jwtService.generateToken(user.getUsername());
 
-        return false;
+        return "Couldn't verify user";
 
     }
 

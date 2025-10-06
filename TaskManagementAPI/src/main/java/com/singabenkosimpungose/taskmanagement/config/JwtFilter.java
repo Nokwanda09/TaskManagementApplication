@@ -19,15 +19,26 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/*
+This class is a security filter that checks every coming HTTP request to your app. It:
+1. Looks for a JWT token
+2. Validates that token to make sure it is correct and not expired.
+3. Tell Spring Security who the user us
+ */
+
 @Component
 public class JwtFilter extends OncePerRequestFilter{
 
     @Autowired
-    private JwtService jwtService;
+    private JwtService jwtService;  //Hnadles JWT token xreation, exteaction and validation
 
     @Autowired
-    private ApplicationContext context;
+    private ApplicationContext context;  //Allow getting other beans managed by Spring.
 
+
+    /*
+     Main method that runs for every HTTP request. Where requests are inspected before reaching controllers
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {

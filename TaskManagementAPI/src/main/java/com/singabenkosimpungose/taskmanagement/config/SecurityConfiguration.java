@@ -18,6 +18,15 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/*
+    Sets up Spring security for your backend application. It decides:
+    1. Which route need login and which don't.
+    2. How users are authenticated (Username and password)
+    3. What kind of passwords are allowed (Encrypted)
+    4. How JWT token filtering work
+ */
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -40,7 +49,11 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
+/*
+ How Spring should verify user credentials.
+ Checks username and password from your database via UserDetailsService 
+ and whether password matches after encryption
+ */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

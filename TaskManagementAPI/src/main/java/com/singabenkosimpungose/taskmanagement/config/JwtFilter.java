@@ -42,14 +42,25 @@ public class JwtFilter extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-       String authorizationHeader = request.getHeader("Authorization");
-        String token = null;
+       String authorizationHeader =  request.getHeader("Authorization");
+       String token = null;
         String username = null;
+        System.out.println("I am running doFilterChainChecking if you're authorised");
+        System.out.println(authorizationHeader);
         
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
+        // if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
+        //     token = authorizationHeader.substring(7);
+        //     username = jwtService.extractUsername(token);
+        //     System.out.println(username);
+        // }
+
+         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
             token = authorizationHeader.substring(7);
+            System.out.println(token);
             username = jwtService.extractUsername(token);
+            System.out.println(username);
         }
+
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = context.getBean(AppUserDetailsService.class).loadUserByUsername(username);

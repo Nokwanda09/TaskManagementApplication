@@ -4,12 +4,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 import com.singabenkosimpungose.taskmanagement.services.TaskService;
 import com.singabenkosimpungose.taskmanagement.services.UserService;
 import com.singabenkosimpungose.taskmanagement.models.Task;
 import com.singabenkosimpungose.taskmanagement.models.User;
+import com.singabenkosimpungose.taskmanagement.repositories.TaskRepository;
+import com.singabenkosimpungose.taskmanagement.repositories.UserRepository;
 import com.singabenkosimpungose.taskmanagement.DTOs.TaskDTO;
+import com.singabenkosimpungose.taskmanagement.config.SecurityConfiguration;
 
 import java.util.List;
 
@@ -23,8 +27,26 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TaskRepository taskRepository;
+
     @Autowired
     private UserService userService;
+
+
+
+
+    @GetMapping("/tasks")
+    public ResponseEntity<List<Task>> getUserTasks(Authentication authentication) {
+        System.out.println(authentication+"\nRe mooooo");
+        String username = authentication.getName(); // logged-in username from JWT
+        User user = userRepository.findByUsername(username).orElseThrow();
+        List<Task> tasks = taskRepository.findByUser(user);
+        return ResponseEntity.ok(tasks);
+    }
 
 
     @GetMapping("/get")

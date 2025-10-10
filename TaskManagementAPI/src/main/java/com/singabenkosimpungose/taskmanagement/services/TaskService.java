@@ -1,13 +1,17 @@
 package com.singabenkosimpungose.taskmanagement.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 import com.singabenkosimpungose.taskmanagement.models.Task;
 import com.singabenkosimpungose.taskmanagement.models.User;
 import com.singabenkosimpungose.taskmanagement.mappers.DateFormatter;
 import com.singabenkosimpungose.taskmanagement.models.Category;
 import com.singabenkosimpungose.taskmanagement.repositories.TaskRepository;
+import com.singabenkosimpungose.taskmanagement.repositories.UserRepository;
 import com.singabenkosimpungose.taskmanagement.DTOs.TaskDTO;
 import com.singabenkosimpungose.taskmanagement.mappers.TaskMapper;
 import com.singabenkosimpungose.taskmanagement.exceptions.EntityNotFoundException;
@@ -25,14 +29,13 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-
     @Autowired
     private TaskMapper taskMapper;
 
 
     @Autowired
     private UserService userService;
-
+    
     public Task getTaskById(Long id){
         Optional<Task> task = taskRepository.findById(id);
             if (task.isPresent()){

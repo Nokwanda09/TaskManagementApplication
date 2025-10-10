@@ -48,7 +48,7 @@ public class UserService {
     public User createUser(User user) {
 
         if (userRepository.existsByUsername(user.getUsername())){
-            throw new DataIntegrityViolationException("Email already exists!");
+            throw new DataIntegrityViolationException("Username already exists!");
         
         }
         user.setPassword(encoder.encode(user.getPassword()));

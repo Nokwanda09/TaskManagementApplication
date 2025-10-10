@@ -39,6 +39,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("Running secirityFilterChain, I'm checking authentication");
         return http.csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request.requestMatchers("/login", "/register")
                         .permitAll()

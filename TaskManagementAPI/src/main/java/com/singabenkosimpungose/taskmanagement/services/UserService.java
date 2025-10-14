@@ -70,6 +70,17 @@ public class UserService {
     }
 
 
+    public User findUserByUsername(String username){
+        Optional<User> user = userRepository.findByUsername(username);
+
+         if (user.isPresent()){
+            return (User) user.get();
+        } else{
+            throw new EntityNotFoundException("User does not exist");
+        }
+    }
+
+
     
 
 

@@ -9,6 +9,8 @@ import com.singabenkosimpungose.taskmanagement.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/*Responsible for converting between Task and TaskDTO classes */
+
 @Component
 public class TaskMapper {
 
@@ -16,8 +18,13 @@ public class TaskMapper {
     private UserService userService;
 
 
+    /*
+    Converts TaskDTO to task entity
+    @param TaskDTO - represents info entered by the user
+    @return Task - task object that represents the task added by the user
+     */
     public Task toTaskEntity(TaskDTO taskDTO){
-        User user = userService.findUserById(taskDTO.getUserId());
+        User user = userService.findUserByUsername(taskDTO.getUsername());
         Task task = new Task();
         Category category = Category.valueOf(taskDTO.getCategory().toUpperCase());
 
@@ -31,15 +38,21 @@ public class TaskMapper {
     }
 
 
+    /*
+    Converts the Task object into TaskDto object
+
+    @param Task 
+    @return TaskDTO
+    */
     public TaskDTO toTaskDTO(Task task){
         TaskDTO taskDTO = new TaskDTO();
-        Long userId = task.getUser().getId();
+        // Long userId = task.getUser().getId();
 
         taskDTO.setName(task.getName());
         taskDTO.setNotes(task.getNotes());
         taskDTO.setCategory(task.getCategory().toString());
         taskDTO.setDueDate(task.getDueDate().toString());
-        taskDTO.setUserId(userId);
+        taskDTO.setUsername(task.getUser().getUsername());
 
         return taskDTO;
     }

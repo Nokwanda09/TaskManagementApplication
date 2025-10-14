@@ -37,13 +37,19 @@ public class TaskController {
     private UserService userService;
 
 
+    public User getUser(Authentication authentication){
+        String username = authentication.getName(); // logged-in username from JWT
+        return userRepository.findByUsername(username).orElseThrow();
+    }
 
 
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getUserTasks(Authentication authentication) {
-        System.out.println(authentication+"\nRe mooooo");
+        System.out.println("Im getting tasks");
         String username = authentication.getName(); // logged-in username from JWT
         User user = userRepository.findByUsername(username).orElseThrow();
+        System.out.println(user.getUsername());
+        // User user = getUser(authentication);
         List<Task> tasks = taskRepository.findByUser(user);
         return ResponseEntity.ok(tasks);
     }

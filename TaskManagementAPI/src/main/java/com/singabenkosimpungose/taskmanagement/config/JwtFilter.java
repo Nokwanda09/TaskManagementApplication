@@ -45,20 +45,10 @@ public class JwtFilter extends OncePerRequestFilter{
        String authorizationHeader =  request.getHeader("Authorization");
        String token = null;
         String username = null;
-        System.out.println("I am running doFilterChainChecking if you're authorised");
-        System.out.println(authorizationHeader);
-        
-        // if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
-        //     token = authorizationHeader.substring(7);
-        //     username = jwtService.extractUsername(token);
-        //     System.out.println(username);
-        // }
 
          if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
             token = authorizationHeader.substring(7);
-            System.out.println(token);
             username = jwtService.extractUsername(token);
-            System.out.println(username);
         }
 
 

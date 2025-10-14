@@ -49,10 +49,12 @@ public class JwtFilter extends OncePerRequestFilter{
          if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
             token = authorizationHeader.substring(7);
             username = jwtService.extractUsername(token);
+            System.out.println("Verifieeeeeed");
         }
 
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            System.out.println("Adding userdeatails to centext");
             UserDetails userDetails = context.getBean(AppUserDetailsService.class).loadUserByUsername(username);
 
             if (jwtService.validateToken(token, userDetails)) {

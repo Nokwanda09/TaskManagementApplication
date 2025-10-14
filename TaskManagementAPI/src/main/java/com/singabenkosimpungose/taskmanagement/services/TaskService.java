@@ -35,6 +35,18 @@ public class TaskService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+
+
+    public List<TaskDTO> getTaskByUser(String username){
+        List<TaskDTO> tasks = new ArrayList<>();
+        User user = userRepository.findByUsername(username).orElseThrow();
+        taskRepository.findByUser(user).forEach(task -> tasks.add(taskMapper.toTaskDTO(task)));
+        return tasks;
+    }
     
     public Task getTaskById(Long id){
         Optional<Task> task = taskRepository.findById(id);

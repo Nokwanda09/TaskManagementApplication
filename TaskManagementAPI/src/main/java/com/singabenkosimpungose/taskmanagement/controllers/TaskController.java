@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/tasks")
+// @RequestMapping("/tasks")
 public class TaskController {
 
     @Autowired
@@ -43,70 +43,84 @@ public class TaskController {
     }
 
 
-    @GetMapping("/tasks")
-    public ResponseEntity<List<Task>> getUserTasks(Authentication authentication) {
+    // @GetMapping("/tasks")
+    // public ResponseEntity<List<Task>> getUserTasks(Authentication authentication) {
+    //     System.out.println("Im getting tasks");
+    //     String username = authentication.getName(); // logged-in username from JWT
+    //     System.out.println(username + " printing in task conntroller");
+    //     User user = userRepository.findByUsername(username).orElseThrow();
+    //     List<Task> tasks = taskRepository.findByUser(user);
+    //     return ResponseEntity.ok(tasks);
+    // }
+
+     @GetMapping("/tasks")
+    public ResponseEntity<List<TaskDTO>> getUserTasks(Authentication authentication) {
         System.out.println("Im getting tasks");
         String username = authentication.getName(); // logged-in username from JWT
-        User user = userRepository.findByUsername(username).orElseThrow();
-        System.out.println(user.getUsername());
-        // User user = getUser(authentication);
-        List<Task> tasks = taskRepository.findByUser(user);
-        return ResponseEntity.ok(tasks);
+        System.out.println(username + " printing in task conntroller");
+        // User user = userRepository.findByUsername(username).orElseThrow();
+        // List<Task> tasks = taskRepository.findByUser(user);
+        return ResponseEntity.ok(taskService.getTaskByUser(username));
     }
 
 
-    @GetMapping("/get")
-    public ResponseEntity<List<TaskDTO>> getTasks(@RequestParam(required= false) String dueDate,
-    @RequestParam(required=false) String category,
-    @RequestParam Long userId){
-
-        List<TaskDTO> tasks;
-
-        if (dueDate != null){
-            tasks =  taskService.getAllTasksByDueDate(dueDate, userId);
-        }else if(category != null){
-            tasks = taskService.getAllTasksInCategory(category, userId);
-        }else{
-            tasks = taskService.getAllTaskForUser(userId);
-        }
-
-        return new ResponseEntity<>(tasks, HttpStatus.OK);
-    }
-
-
-    @GetMapping("/search")
-    public ResponseEntity<Task> getTaskByName(@RequestParam String name){
-        return new ResponseEntity<>(taskService.getTaskByName(name), HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<TaskDTO>> getAllTasks(){
-
-        if (taskService.getAllTasks().isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
-        return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
-    }
-
-
-
+    
     @PostMapping("/add")
-    public ResponseEntity<Task> addTask(@RequestBody TaskDTO task){
+    public ResponseEntity<Task> addTask(@RequestBody TaskDTO task, Authentication authentication){
+        String username = authentication.getName(); // logged-in username from JWT
+        task.setUsername(username);
         return new ResponseEntity<>(taskService.addNewTask(task), HttpStatus.OK);
     }
 
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable Long id){
-            taskService.deleteTask(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-    }
+    // @GetMapping("/get")
+    // public ResponseEntity<List<TaskDTO>> getTasks(@RequestParam(required= false) String dueDate,
+    // @RequestParam(required=false) String category,
+    // @RequestParam Long userId){
+
+    //     List<TaskDTO> tasks;
+
+    //     if (dueDate != null){
+    //         tasks =  taskService.getAllTasksByDueDate(dueDate, userId);
+    //     }else if(category != null){
+    //         tasks = taskService.getAllTasksInCategory(category, userId);
+    //     }else{
+    //         tasks = taskService.getAllTaskForUser(userId);
+    //     }
+
+    //     return new ResponseEntity<>(tasks, HttpStatus.OK);
+    // }
 
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id,@Valid @RequestBody Task task){
-            return new ResponseEntity<>(taskService.updateTask(id, task), HttpStatus.OK);
-    }
+    // @GetMapping("/search")
+    // public ResponseEntity<Task> getTaskByName(@RequestParam String name){
+    //     return new ResponseEntity<>(taskService.getTaskByName(name), HttpStatus.OK);
+    // }
+
+    // @GetMapping
+    // public ResponseEntity<List<TaskDTO>> getAllTasks(){
+
+    //     if (taskService.getAllTasks().isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    //     return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
+    // }
+
+
+
+
+
+    // @DeleteMapping("/delete/{id}")
+    // public ResponseEntity<Void> deleteTask(@PathVariable Long id){
+    //         taskService.deleteTask(id);
+    //         return new ResponseEntity<>(HttpStatus.OK);
+    // }
+
+
+    // @PutMapping("/update/{id}")
+    // public ResponseEntity<Task> updateTask(@PathVariable Long id,@Valid @RequestBody Task task){
+    //         return new ResponseEntity<>(taskService.updateTask(id, task), HttpStatus.OK);
+    // }
     
 
 }

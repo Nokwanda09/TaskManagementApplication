@@ -62,6 +62,7 @@ public class Task {
     /*
      * User that the task belong to
      */
+    @NotNull
     @ManyToOne
     @JoinColumn(name= "user_id", nullable = false)
     private User user;

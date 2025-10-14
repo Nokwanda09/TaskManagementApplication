@@ -37,38 +37,22 @@ public class TaskController {
     private UserService userService;
 
 
-    public User getUser(Authentication authentication){
-        String username = authentication.getName(); // logged-in username from JWT
-        return userRepository.findByUsername(username).orElseThrow();
+    public String getUsername(Authentication authentication){
+        return authentication.getName();
     }
-
-
-    // @GetMapping("/tasks")
-    // public ResponseEntity<List<Task>> getUserTasks(Authentication authentication) {
-    //     System.out.println("Im getting tasks");
-    //     String username = authentication.getName(); // logged-in username from JWT
-    //     System.out.println(username + " printing in task conntroller");
-    //     User user = userRepository.findByUsername(username).orElseThrow();
-    //     List<Task> tasks = taskRepository.findByUser(user);
-    //     return ResponseEntity.ok(tasks);
-    // }
 
      @GetMapping("/tasks")
     public ResponseEntity<List<TaskDTO>> getUserTasks(Authentication authentication) {
-        System.out.println("Im getting tasks");
-        String username = authentication.getName(); // logged-in username from JWT
-        System.out.println(username + " printing in task conntroller");
-        // User user = userRepository.findByUsername(username).orElseThrow();
-        // List<Task> tasks = taskRepository.findByUser(user);
-        return ResponseEntity.ok(taskService.getTaskByUser(username));
+        // String username = authentication.getName(); // logged-in username from JWT
+        return ResponseEntity.ok(taskService.getTaskByUser(getUsername(authentication)));
     }
 
 
     
     @PostMapping("/add")
     public ResponseEntity<Task> addTask(@RequestBody TaskDTO task, Authentication authentication){
-        String username = authentication.getName(); // logged-in username from JWT
-        task.setUsername(username);
+        // String username = authentication.getName(); // logged-in username from JWT
+        task.setUsername(getUsername(authentication));
         return new ResponseEntity<>(taskService.addNewTask(task), HttpStatus.OK);
     }
 

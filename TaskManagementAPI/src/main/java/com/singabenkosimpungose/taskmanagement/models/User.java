@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /*
  * Represents user in the system
  * 
@@ -51,5 +53,6 @@ public class User {
      * List of tasks that belong to a single user
      */
     @OneToMany(mappedBy="user", cascade= CascadeType.ALL, orphanRemoval= true)
+    @JsonIgnore
     private List<Task> tasks;
 }

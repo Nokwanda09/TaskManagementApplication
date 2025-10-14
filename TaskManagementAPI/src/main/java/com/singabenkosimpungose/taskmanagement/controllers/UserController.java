@@ -27,6 +27,7 @@ public class UserController {
 
        @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody UserDTO loginUser){
+        loginUser.setUsername(loginUser.getUsername().toLowerCase());
         String userExists =  userService.verifyUser(loginUser);
         return ResponseEntity.ok(userExists);
     }
@@ -36,6 +37,7 @@ public class UserController {
     @PostMapping("/register")
     public <T> ResponseEntity<T> registerUser(@RequestBody User user){
         try{
+            user.setUsername(user.getUsername().toLowerCase());
             User newUser = userService.createUser(user);
             return (ResponseEntity<T>) ResponseEntity.ok(newUser);
         } catch (DataIntegrityViolationException error){

@@ -57,6 +57,14 @@ public class TaskController {
     }
 
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id, Authentication authentication){
+            String username = getUsername(authentication);
+            taskService.deleteTask(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
     // @GetMapping("/get")
     // public ResponseEntity<List<TaskDTO>> getTasks(@RequestParam(required= false) String dueDate,
@@ -88,16 +96,6 @@ public class TaskController {
     //     if (taskService.getAllTasks().isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     //     return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
-    // }
-
-
-
-
-
-    // @DeleteMapping("/delete/{id}")
-    // public ResponseEntity<Void> deleteTask(@PathVariable Long id){
-    //         taskService.deleteTask(id);
-    //         return new ResponseEntity<>(HttpStatus.OK);
     // }
 
 

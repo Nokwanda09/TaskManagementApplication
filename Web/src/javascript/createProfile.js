@@ -3,17 +3,19 @@ const createProfileForm = document.getElementById("create-profile-form");
 function createProfile(event) {
   event.preventDefault();
 
-  const emailAddress = document.getElementById("email-address").value;
-  const userName = document.getElementById("user-name").value;
+  const full_name = document.getElementById("full-name").value;
+  const user_name = document.getElementById("user-name").value;
+  const pass_word = document.getElementById("password").value;
 
-  fetch(`http://localhost:8080/user/create`, {
+  fetch(`http://localhost:8080/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: emailAddress,
-      name: userName,
+      username: full_name,
+      fullName: user_name,
+      password: pass_word,
     }),
   })
     .then((response) => {
@@ -25,11 +27,11 @@ function createProfile(event) {
       return response.json();
     })
     .then((data) => {
-      const userName = data.user.name;
-      
-      console.log(data.user.name);
-      window.location.href = "/Web/HTML/displayTasks.html";
-
+      // const full_name = data.fullName;
+      // const
+      // sessionStorage.setItem("fullName", data.fullName);
+      // console.log(data.user.name);
+      window.location.href = "/Web/HTML/login.html";
     });
 }
 

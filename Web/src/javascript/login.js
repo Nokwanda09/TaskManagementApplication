@@ -4,19 +4,22 @@ const cardBody = document.getElementById("card-body");
 function loginUser(event) {
   event.preventDefault();
 
-  const emailAddress = document.getElementById("email-address").value;
-  console.log(emailAddress);
+  const userName = document.getElementById("username").value;
+  const passWord = document.getElementById("password").value;
+  console.log(userName + " " + passWord);
 
-  fetch(`http://localhost:8080/user/login`, {
+  fetch(`http://localhost:8080/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email: emailAddress }),
+    body: JSON.stringify({ username: userName, password: passWord }),
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.exists) {
+      if (data.token) {
+        sessionStorage.setItem("userToken", data.token);
+        sessionStorage.setItem("fullName", data.fullName);
         window.location.href = "/Web/HTML/displayTasks.html";
       } else {
         changeCardContent();

@@ -25,12 +25,26 @@ function getTasks() {
     .then((tasks) => {
       if (tasks) {
         tasks.forEach((task) => {
-          tasks_table.innerHTML = `
-          <div class="task">
-        <div class="task-title">${task.name}</div>
-        <span class="task-category">${task.category}</span>
-        <div class="task-notes">${task.notes}</div>
-      </div>`;
+          const task_row = document.createElement("div");
+          task_row.classList.add("task");
+
+          const task_title = document.createElement("div");
+          task_title.classList.add("task-title");
+
+          const task_category = document.createElement("span");
+          task_category.classList.add("task-category");
+
+          const task_notes = document.createElement("div");
+          task_notes.classList.add("task-notes");
+
+          tasks_table.appendChild(task_row);
+          task_row.appendChild(task_title);
+          task_row.appendChild(task_category);
+          task_row.appendChild(task_notes);
+
+          task_title.textContent = task.name;
+          task_category.textContent = task.category;
+          task_notes.textContent = task.notes;
         });
       } else {
         tasks_table.innerText = "No tasks available.";

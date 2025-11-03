@@ -1,10 +1,41 @@
-body{
-    background: #f2f9f1;
+body {
+  background: #f2f9f1;
 }
 
-h1{
-    background-color: #b6cdbd;
-    font-family: Delicious Handrawn;
-    text-align: center;
-    font-size: 80px;
+h1 {
+  background-color: #b6cdbd;
+  font-family: Delicious Handrawn;
+  text-align: center;
+  font-size: 80px;
+}
+
+.tasks-table {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin: auto;
+}
+
+.task {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  border-width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-category {
+  /* padding-top: 9px; */
+  border-left: 1px grey solid;
+  padding-left: 5px;
+}
+
+.task-notes {
+  border-left: 1px grey solid;
+  padding-left: 5px;
 }

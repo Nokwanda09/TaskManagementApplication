@@ -22,6 +22,7 @@ import jakarta.validation.Valid;
 
 @RestController
 // @RequestMapping("/tasks")
+@CrossOrigin(origins = "http://localhost:5500", allowCredentials = "true")
 public class TaskController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class TaskController {
         return authentication.getName();
     }
 
-     @GetMapping("/tasks")
+    @GetMapping("/tasks")
     public ResponseEntity<List<TaskDTO>> getUserTasks(Authentication authentication) {
         // String username = authentication.getName(); // logged-in username from JWT
         return ResponseEntity.ok(taskService.getTaskByUser(getUsername(authentication)));

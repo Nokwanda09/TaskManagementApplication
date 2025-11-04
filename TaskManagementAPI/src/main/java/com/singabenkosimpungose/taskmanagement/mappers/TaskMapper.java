@@ -29,10 +29,15 @@ public class TaskMapper {
         Category category = Category.valueOf(taskDTO.getCategory().toUpperCase());
 
 
+        if (taskDTO.getDueDate() == null){
+            task.setDueDate(null);
+        } else{
+        task.setDueDate(new DateFormatter().toLocalDate(taskDTO.getDueDate()));
+        }
         task.setName(taskDTO.getName());
         task.setNotes(taskDTO.getNotes());
         task.setCategory(category);
-        task.setDueDate(new DateFormatter().toLocalDate(taskDTO.getDueDate()));
+       
         task.setUser(user);
         return  task;
     }
@@ -47,11 +52,17 @@ public class TaskMapper {
     public TaskDTO toTaskDTO(Task task){
         TaskDTO taskDTO = new TaskDTO();
         // Long userId = task.getUser().getId();
+        if (task.getDueDate() == null){
+            task.setDueDate(null);
+        }else{
+        taskDTO.setDueDate(task.getDueDate().toString());
+        }
+
+
 
         taskDTO.setName(task.getName());
         taskDTO.setNotes(task.getNotes());
         taskDTO.setCategory(task.getCategory().toString());
-        taskDTO.setDueDate(task.getDueDate().toString());
         taskDTO.setUsername(task.getUser().getUsername());
 
         return taskDTO;

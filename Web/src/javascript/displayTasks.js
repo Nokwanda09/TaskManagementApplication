@@ -24,6 +24,7 @@ function getTasks() {
     .then((response) => response.json())
     .then((tasks) => {
       if (tasks) {
+        console.log(tasks);
         tasks.forEach((task) => {
           const task_row = document.createElement("div");
           task_row.classList.add("task");

@@ -30,20 +30,26 @@
     <div class="card w-50 m-auto mt-5 mb-5">
       <div class="card-body">
         <h1>Add new task</h1>
-        <form action="" method="">
+        <form id="new-task-form">
           <div class="mb-5">
             <label for="task-name">Task Name</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="task-name"
               name="task-name"
+              required
             />
           </div>
 
           <div class="mb-5">
             <label for="task-category">Task Category</label>
-            <select class="form-select" aria-label="Default select example">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="task-category"
+              required
+            >
               <option selected></option>
               <option value="PERSONAL">PERSONAL</option>
               <option value="SCHOOL">SCHOOL</option>
@@ -67,5 +73,6 @@
         </form>
       </div>
     </div>
+    <script src="/Web/src/javascript/addTask.js"></script>
   </body>
 </html>

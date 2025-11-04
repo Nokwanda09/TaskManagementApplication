@@ -10,14 +10,19 @@ h1 {
 }
 
 .tasks-table {
-  margin-top: 20px;
-  margin-left: 10px;
   margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .task {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
   border-width: 50%;
@@ -27,15 +32,39 @@ h1 {
 
 .task-title {
   font-weight: bold;
+  width: 30%;
 }
 
 .task-category {
   /* padding-top: 9px; */
   border-left: 1px grey solid;
   padding-left: 5px;
+  width: 30%;
 }
 
 .task-notes {
   border-left: 1px grey solid;
   padding-left: 5px;
+  width: 40%;
+}
+
+.add-button {
+  margin: auto;
+  margin-top: 40px;
+  padding: 20px;
+  width: fit-content;
+  color: #2c786c;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  border: 1px solid #ddeedf;
+  border-radius: 5px;
+}
+
+.add-button:hover {
+  background-color: #ddeedf;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }

@@ -54,14 +54,13 @@ function getTasks() {
 }
 
 function displayDeleteForm() {
+  const delete_button = document.getElementById("delete-button");
   const delete_card = document.getElementById("delete-card");
 
   delete_button.addEventListener("click", () => {
     delete_card.style.visibility = "visible";
   });
 }
-
-const delete_button = document.getElementById("delete-button");
 
 function makeNavItemActive() {
   const navItems = document.querySelectorAll("#menu .nav-link");

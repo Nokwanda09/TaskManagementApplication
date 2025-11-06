@@ -27,21 +27,53 @@
     <link rel="stylesheet" href="/Web/src/displayTasksStyle.css" />
   </head>
   <body>
-    <h1 class="text-centered p-5">
-      Hi, <span class="full-name" id="full-name"></span>
-    </h1>
+    <h3 class="p-2">Hi, <span class="full-name" id="full-name"></span></h3>
+
+    <!-- Navigation bar -->
+    <ul class="nav nav-underline menu">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          href="/Web/HTML/displayTasks.html"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Web/HTML/createTask.html">Add Task</a>
+      </li>
+    </ul>
 
     <div class="tasks-table" id="tasks-table"></div>
-    <a href="/Web/HTML/createTask.html"
-      ><div class="add-button">Add Task</div></a
-    >
-
+    <div class="buttons">
+      <a href="/Web/HTML/createTask.html"><div class="button">Add Task</div></a>
+      <div class="button" id="delete-button">Delete Task</div>
+    </div>
     <!-- <div class="task">
         <div class="task-title">Washing</div>
         <span class="task-category">School</span>
         <div class="task-notes">Complete before 1pm</div>
       </div>
     </div> -->
+    <div class="delete-card" id="delete-card">
+      <div class="delete-task-card">
+        <div class="close-button">&times;</div>
+        <p>Enter the name of the task you want to delete</p>
+        <form id="login-form">
+          <div class="form-floating mb-3" id="email-address-box">
+            <input
+              type="text"
+              class="form-control"
+              id="task-name"
+              name="task-name"
+            />
+            <label for="task-name">Name of The Task</label>
+          </div>
+
+          <div class="button" type="submit">Delete</div>
+        </form>
+      </div>
+    </div>
   </body>
 
   <script src="/Web/src/javascript/displayTasks.js"></script>

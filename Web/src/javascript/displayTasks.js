@@ -53,5 +53,31 @@ function getTasks() {
     });
 }
 
+function displayDeleteForm() {
+  const delete_card = document.getElementById("delete-card");
+
+  delete_button.addEventListener("click", () => {
+    delete_card.style.visibility = "visible";
+  });
+}
+
+const delete_button = document.getElementById("delete-button");
+
+function makeNavItemActive() {
+  const navItems = document.querySelectorAll("#menu .nav-link");
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      navItems.forEach((li) => li.classList.remove("active"));
+
+      this.classList.add("active");
+    });
+  });
+}
+
 window.addEventListener("load", getFullName);
 window.addEventListener("load", getTasks);
+
+displayDeleteForm();
+
+document.addEventListener("DOMContentLoaded", makeNavItemActive);

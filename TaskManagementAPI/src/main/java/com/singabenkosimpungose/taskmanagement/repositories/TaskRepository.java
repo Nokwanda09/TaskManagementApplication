@@ -23,7 +23,7 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
 
     public List<Task> findAllByDueDateAndUser(LocalDate dueDate, User user);
 
-    @Query(value = "SELECT * FROM TASKS WHERE name=:name AND user_id=:id LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM tasks WHERE name=:name AND user_id=:id LIMIT 1", nativeQuery = true)
     public Optional<Task> findByNameAndUserId(@Param("name") String name,@Param("id") Long id);
 
     public List<Task> findByUser(User user);

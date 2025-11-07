@@ -57,9 +57,9 @@
     </div> -->
     <div class="delete-card" id="delete-card">
       <div class="delete-task-card">
-        <div class="close-button">&times;</div>
+        <div class="close-button" id="close-button">&times;</div>
         <p>Enter the name of the task you want to delete</p>
-        <form id="login-form">
+        <form id="delete-form">
           <div class="form-floating mb-3" id="email-address-box">
             <input
               type="text"
@@ -70,7 +70,9 @@
             <label for="task-name">Name of The Task</label>
           </div>
 
-          <div class="button" type="submit">Delete</div>
+          <div>
+            <button type="submit" class="button">Delete</button>
+          </div>
         </form>
       </div>
     </div>

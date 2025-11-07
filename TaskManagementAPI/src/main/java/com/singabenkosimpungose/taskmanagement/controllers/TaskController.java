@@ -58,10 +58,10 @@ public class TaskController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable Long id, Authentication authentication){
+    @DeleteMapping("/delete/{taskName}")
+    public ResponseEntity<Void> deleteTask(@PathVariable String taskName, Authentication authentication){
             String username = getUsername(authentication);
-            taskService.deleteTask(id);
+            taskService.deleteTask(taskName, username);
             return new ResponseEntity<>(HttpStatus.OK);
     }
 

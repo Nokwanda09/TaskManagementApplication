@@ -56,9 +56,38 @@ function getTasks() {
 function displayDeleteForm() {
   const delete_button = document.getElementById("delete-button");
   const delete_card = document.getElementById("delete-card");
+  const close_button = document.getElementById("close-button");
 
   delete_button.addEventListener("click", () => {
     delete_card.style.visibility = "visible";
+    delete_card.style.opacity = 1;
+  });
+
+  close_button.addEventListener("click", () => {
+    delete_card.style.visibility = "hidden";
+  });
+}
+
+function deleteTask(event) {
+  console.log("Delete task function called!!!!");
+  event.preventDefault();
+
+  let task_name = document.getElementById("task-name").value;
+  console.log(task_name);
+
+  fetch(`http://localhost:8080/delete/${task_name}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("userToken")}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      alert("Task deleted!");
+      window.location.reload();
+    } else {
+      alert("Oooops, something went wrong");
+    }
   });
 }
 
@@ -78,5 +107,8 @@ window.addEventListener("load", getFullName);
 window.addEventListener("load", getTasks);
 
 displayDeleteForm();
+const delete_form = document.getElementById("delete-form");
+
+delete_form.addEventListener("submit", deleteTask);
 
 document.addEventListener("DOMContentLoaded", makeNavItemActive);

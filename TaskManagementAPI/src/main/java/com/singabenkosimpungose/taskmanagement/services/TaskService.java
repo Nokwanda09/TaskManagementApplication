@@ -113,8 +113,9 @@ public class TaskService {
     }
 
 
-    public void deleteTask(Long id){
-            Optional<Task> task = taskRepository.findById(id);
+    public void deleteTask(String taskName, String username){
+            Long user_id = userRepository.findByUsername(username).get().getId();
+            Optional<Task> task = taskRepository.findByNameAndUserId(taskName, user_id);
 
             if (task.isPresent()){
                 taskRepository.delete((Task) task.get());

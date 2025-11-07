@@ -70,6 +70,8 @@ h3 {
   align-items: center;
   border: 1px solid #ddeedf;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 .button:hover {
@@ -88,6 +90,8 @@ h3 {
   /* min-width: 100vh; */
   background-color: #00000050;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 0, 5s ease;
 }
 
 .delete-task-card {

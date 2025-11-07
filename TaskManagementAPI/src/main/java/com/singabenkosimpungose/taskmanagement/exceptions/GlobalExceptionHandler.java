@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ProblemDetail handleEntityNotFoundException(EntityNotFoundException error, WebRequest request){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, error.getMessage());
-        problemDetail.setType(URI.create("A link to doc")); //A link to a documnentation for more info in the error
+        problemDetail.setType(URI.create("https://technologyadvice.com/blog/information-technology/api-error/")); //A link to a documnentation for more info in the error
         problemDetail.setTitle("RESOURCE NT FOUND");
         problemDetail.setInstance(URI.create(request.getDescription(false)));   //Description of wjat happened
         

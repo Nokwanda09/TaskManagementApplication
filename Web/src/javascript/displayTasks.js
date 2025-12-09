@@ -25,6 +25,7 @@ function getTasks() {
     .then((tasks) => {
       if (tasks) {
         console.log(tasks);
+        tasks_table.visibility = visible;
         tasks.forEach((task) => {
           const task_row = document.createElement("div");
           task_row.classList.add("task");

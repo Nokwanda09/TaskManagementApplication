@@ -28,9 +28,6 @@ public class UserService {
     @Autowired
     private JwtService jwtService;
 
-    // @Autowired
-    // private UserDTO userDto;
-
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public String verifyUser(UserDTO user) {

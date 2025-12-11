@@ -13,8 +13,8 @@ function createProfile(event) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: full_name,
-      fullName: user_name,
+      username: user_name,
+      fullName: full_name,
       password: pass_word,
     }),
   })

@@ -31,7 +31,6 @@ public class UserController {
         loginUser.setUsername(username);
         String userExists =  userService.verifyUser(loginUser);
         String fullName = userService.findUserByUsername(username).getFullName();
-        System.out.println(userExists);
         return ResponseEntity.ok(Map.of("token",userExists, "fullName", fullName));
     }
 

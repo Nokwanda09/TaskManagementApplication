@@ -1,0 +1,18 @@
+# version: "1.0"
+
+services:
+  database-server:
+    image: mysql:8.0
+    container_name: mysql_server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - taskmanagementapp-data:/var/lib/mysql/
+    ports:
+      - "3307:3306"
+
+volumes:
+  taskmanagementapp-data:
+    driver: local
